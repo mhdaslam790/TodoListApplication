@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <BorderPane fx:controller="com.asl.todoList.Controller"
-            xmlns:fx="http://javafx.com/fxml" >
+            xmlns:fx="http://javafx.com/fxml"  stylesheets="@datamodel/style.css" >
+
     <left>
         <ListView fx:id="todoListView"  >
 
@@ -21,8 +22,8 @@
         <VBox>
         <TextArea fx:id="itemDetailsTextArea" VBox.vgrow="ALWAYS"/>
 
-        <HBox style="-fx-background-color: white" >
-            <Label text="Due: ">
+        <HBox  >
+            <Label text=" Due: ">
 
             <font>
                 <Font name="Times New Roman bold" size="20"></Font>
