@@ -1,0 +1,35 @@
+.list-view .list-cell:even {
+-fx-background-color: gray;
+-fx-text-fill: black;
+
+}
+.list-view .list-cell:odd {
+-fx-background-color: #A9A9A9;
+-fx-text-fill: black;
+
+
+}
+/* changing  selected cell colour in LIstView */
+.list-view:focused .list-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-selection-bar;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: -fx-accent;
+    /* -fx-text-fill: -fx-selection-bar-text;  */
+    -fx-text-fill: white;
+}
+.list-view:focused .list-cell:filled:selected, .list-view:focused .list-cell:filled:selected:hover {
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    /* -fx-text-fill: -fx-selection-bar-text;  */
+    -fx-text-fill: white;
+
+}
+Label {
+    -fx-text-fill: white;
+
+}
+ HBox {
+    -fx-background-color: black;
+    -fx-border-color: #57595d;
+
+}
