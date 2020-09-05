@@ -1,5 +1,6 @@
 package com.asl.todoList;
 
+import com.asl.todoList.datamodel.TodoData;
 import com.asl.todoList.datamodel.TodoItem;
 import javafx.beans.value.ChangeListener;
 
@@ -27,23 +28,24 @@ public class Controller {
 
     public void initialize()
     {
-        TodoItem item1= new TodoItem("mail birthday card","buy a 30th birthday card jord",
-                LocalDate.of(2016, Month.APRIL,25));
-        TodoItem item2= new TodoItem("DOCTOR appointment","visit doctor for health chceckup ,@  street 45",
-                LocalDate.of(2016, Month.MAY,23));
-        TodoItem item3= new TodoItem("finish design proposal for client","i promised mikei will send website backup on 22nd april",
-                LocalDate.of(2016, Month.APRIL,22));
-        TodoItem item4= new TodoItem("pickup brother at the station","brother arriving on march 23 on the 5:00 train",
-                LocalDate.of(2016, Month.MARCH,23));
-        TodoItem item5= new TodoItem("pickup dry cleaning","the clothes should be ready by wednesday",
-                LocalDate.of(2016, Month.APRIL,20));
-
-        todoItems =new ArrayList<TodoItem>();
-        todoItems.add(item1);
-        todoItems.add(item2);
-        todoItems.add(item3);
-        todoItems.add(item4);
-        todoItems.add(item5);
+ //       TodoItem item1= new TodoItem("mail birthday card","buy a 30th birthday card jord",
+ //               LocalDate.of(2016, Month.APRIL,25));
+//        TodoItem item2= new TodoItem("DOCTOR appointment","visit doctor for health chceckup ,@  street 45",
+//                LocalDate.of(2016, Month.MAY,23));
+//        TodoItem item3= new TodoItem("finish design proposal for client","i promised mikei will send website backup on 22nd april",
+//                LocalDate.of(2016, Month.APRIL,22));
+//        TodoItem item4= new TodoItem("pickup brother at the station","brother arriving on march 23 on the 5:00 train",
+//                LocalDate.of(2016, Month.MARCH,23));
+//        TodoItem item5= new TodoItem("pickup dry cleaning","the clothes should be ready by wednesday",
+//                LocalDate.of(2016, Month.APRIL,20));
+//
+//        todoItems =new ArrayList<TodoItem>();
+//        todoItems.add(item1);
+//        todoItems.add(item2);
+//        todoItems.add(item3);
+//        todoItems.add(item4);
+//        todoItems.add(item5);
+//        TodoData.getInstance().setTodoItems(todoItems);
 
          todoListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TodoItem>() {
              @Override
@@ -58,7 +60,8 @@ public class Controller {
              }
          });
 
-        todoListView.getItems().setAll(todoItems);
+        //todoListView should be in observableArrayList
+        todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
 
