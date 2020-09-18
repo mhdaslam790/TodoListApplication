@@ -6,13 +6,19 @@ import javafx.beans.value.ChangeListener;
 
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Controller {
 
@@ -25,6 +31,16 @@ public class Controller {
     private TextArea itemDetailsTextArea;
     @FXML
     private Label deadlineLabel;
+    @FXML
+    private BorderPane mainBorderPane;
+    @FXML
+    private  TextField saveDescription;
+    @FXML
+    private TextArea saveDetail;
+    @FXML
+    private DatePicker saveDate;
+
+
 
     public void initialize()
     {
@@ -64,6 +80,35 @@ public class Controller {
         todoListView.getItems().setAll(TodoData.getInstance().getTodoItems());
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
+
+    }
+    @FXML
+    public  void  showNewItemDialog()
+    {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainBorderPane.getScene().getWindow());
+       FXMLLoader fxmlLoader = new FXMLLoader();
+       fxmlLoader.setLocation(getClass().getResource("todoItemDialog.fxml"));
+        try {
+            // syntax to load fxml
+
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+        }catch (IOException e)
+        {
+            System.out.println("couldnt load dialog");
+            e.printStackTrace();
+        }
+
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if ( result.isPresent() && result.get() == ButtonType.OK) {
+            DialogController controller = fxmlLoader.getController();
+            controller.processResults();
+            todoListView.getItems().setAll((TodoData.getInstance().getTodoItems()));
+           
+        }
 
     }
     @FXML

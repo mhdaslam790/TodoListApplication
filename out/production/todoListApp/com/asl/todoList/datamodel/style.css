@@ -1,11 +1,11 @@
 .list-view .list-cell:even {
 -fx-background-color: gray;
--fx-text-fill: black;
+-fx-text-fill: #1a1a1a;
 
 }
 .list-view .list-cell:odd {
 -fx-background-color: #A9A9A9;
--fx-text-fill: black;
+-fx-text-fill: #1a1a1a;
 
 
 }
@@ -25,11 +25,9 @@
 
 }
 Label {
-    -fx-text-fill: white;
+    -fx-text-fill: #1a1a1a;
 
 }
- HBox {
-    -fx-background-color: #121212;
-    -fx-border-color: #57595d;
 
-}
+
+
