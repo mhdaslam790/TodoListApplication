@@ -20,10 +20,13 @@ public class DialogController {
     @FXML
     private DatePicker saveDate;
 
-    public void processResults() {
+    public TodoItem processResults() {
         String shortdescription = saveDescription.getText().trim();
         String details = saveDetail.getText().trim();
         LocalDate date = saveDate.getValue();
-        TodoData.getInstance().addTodoItems(new TodoItem(shortdescription, details, date));
+        TodoItem item = new TodoItem(shortdescription, details, date);
+        TodoData.getInstance().addTodoItems(item);
+        return  item;
+
     }
 }
