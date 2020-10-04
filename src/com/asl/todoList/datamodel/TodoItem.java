@@ -37,8 +37,8 @@ public class TodoItem {
         DeadLine = deadLine;
     }
 
-    @Override
-    public String toString() {
-        return shortDescription;
-    }
+  //  @Override
+//    public String toString() {
+//        return shortDescription;
+//    }
 }

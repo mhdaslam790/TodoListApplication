@@ -1,6 +1,8 @@
 package com.asl.todoList.datamodel;
 
+import javafx.beans.value.ObservableNumberValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +19,7 @@ public class TodoData {
     private static  TodoData  instance = new TodoData();
     private  static String filename = "TodoItem.txt";
 
-    private List<TodoItem> TodoItems;
+    private ObservableList<TodoItem> TodoItems;
     private DateTimeFormatter formatter;
 
     public static TodoData getInstance()
@@ -29,7 +31,8 @@ public class TodoData {
         formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     }
 
-    public List<TodoItem> getTodoItems() {
+    public ObservableList<TodoItem> getTodoItems() {
+        //show todoitem after new todo savee
 
         return TodoItems;
     }
